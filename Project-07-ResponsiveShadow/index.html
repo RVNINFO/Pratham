@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mouse Shadow</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <div class="hero">
+    <h1 contenteditable>🔥WOAH!</h1>
+  </div>
+
+  <style>
+  html {
+    color: black;
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
+
+  h1 {
+    text-shadow: 10px 10px 0 rgba(220, 220, 220, 0.788);
+    font-size: 100px;
+  }
+  </style>
+
+<script>
+  const hero = document.querySelector('.hero');
+  const txt = document.querySelector('h1');
+  let walk = 50;
+  hero.addEventListener('mousemove', shadow);
+  function shadow (e){
+    let x = e.offsetX;
+    let y = e.offsetY;
+    if(e.target!==this){
+      x = x+e.target.offsetTop;
+      y = y+e.target.offsetLeft;
+    }
+    const width = hero.offsetWidth;
+    const height = hero.offsetHeight;
+    
+    const xWalk = (x/width*walk) - (walk/2);
+    const yWalk = (y/height*walk) - (walk/2);
+
+    txt.style.textShadow = `${xWalk}px ${yWalk}px 0 rgba(220, 220, 220, 0.788)`;
+  }
+</script>
+</body>
+</html>
